@@ -1,13 +1,12 @@
 package com.example.moviestreamingapp.model;
 
-public class BannerMovies {
-
+public class HomeMovies {
     Integer id;
     String movieName;
     String imageUrl;
     String fileUrls;
 
-    public BannerMovies(Integer id, String movieName, String imageUrl, String fileUrls) {
+    public HomeMovies(Integer id, String movieName, String imageUrl, String fileUrls) {
         this.id = id;
         this.movieName = movieName;
         this.imageUrl = imageUrl;
@@ -18,28 +17,28 @@ public class BannerMovies {
         return id;
     }
 
-    public String getMovieName() {
-        return movieName;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public String getFileUrls() {
-        return fileUrls;
-    }
-
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getMovieName() {
+        return movieName;
     }
 
     public void setMovieName(String movieName) {
         this.movieName = movieName;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getFileUrls() {
+        return fileUrls;
     }
 
     public void setFileUrls(String fileUrls) {
@@ -48,7 +47,7 @@ public class BannerMovies {
 
     @Override
     public String toString() {
-        return "BannerMovies{" +
+        return "HomeMovies{" +
                 "id=" + id +
                 ", movieName='" + movieName + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
