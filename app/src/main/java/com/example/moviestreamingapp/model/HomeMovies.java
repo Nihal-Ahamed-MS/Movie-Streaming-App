@@ -6,6 +6,8 @@ public class HomeMovies {
     String imageUrl;
     String fileUrls;
 
+    public  HomeMovies(){}
+
     public HomeMovies(Integer id, String movieName, String imageUrl, String fileUrls) {
         this.id = id;
         this.movieName = movieName;
