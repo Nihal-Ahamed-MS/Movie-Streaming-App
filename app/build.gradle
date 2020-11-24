@@ -4,6 +4,11 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 29
 
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.example.moviestreamingapp"
         minSdkVersion 23
@@ -28,6 +33,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.google.firebase:firebase-firestore:17.1.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -38,4 +44,6 @@ dependencies {
 
     // FirebaseUI for Cloud Firestore
     implementation 'com.firebaseui:firebase-ui-firestore:7.1.0'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.12.1'
 }

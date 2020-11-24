@@ -72,7 +72,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeMovieRecyclerView"
         android:layout_width="409dp"
-        android:layout_height="465dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
