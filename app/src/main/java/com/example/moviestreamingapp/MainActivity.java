@@ -47,15 +47,16 @@ public class MainActivity extends AppCompatActivity implements HomeMovieAdapter.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+
+        setTitle("Video Player");
 
         homeMovieRecyclerView = findViewById(R.id.homeMovieRecyclerView);
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         homeBannerList = new ArrayList<>();
-        homeBannerList.add(new BannerMovies(1,"Master","https://picsum.photos/250?image=9",""));
-        homeBannerList.add(new BannerMovies(2,"Master","https://image.shutterstock.com/image-illustration/blockchain-technology-futuristic-hud-background-260nw-767232946.jpg",""));
-        homeBannerList.add(new BannerMovies(3,"Master","https://image.shutterstock.com/image-vector/white-global-communication-banner-colorful-600w-1131019226.jpg",""));
+        homeBannerList.add(new BannerMovies(1,"Master","https://www.seelatest.com/images/master-movie-review-cast-trailer-budget-release-date-and-collection.jpg",""));
+        homeBannerList.add(new BannerMovies(2,"Master","https://www.shmoti.com/ImageFiles/Image_555x271/20200329_Banner_Soorarai_Pottru_large20200329.jpg",""));
+        homeBannerList.add(new BannerMovies(3,"Master","https://indiaglitz-media.s3.amazonaws.com/tamil/home/seemaraja-review-13918m5.jpg",""));
 
         tvBannerList = new ArrayList<>();
         tvBannerList.add(new BannerMovies(1,"Master","https://picsum.photos/250?image=9",""));

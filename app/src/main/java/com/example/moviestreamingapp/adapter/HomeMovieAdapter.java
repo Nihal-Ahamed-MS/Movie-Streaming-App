@@ -33,7 +33,6 @@ public class HomeMovieAdapter extends FirestoreRecyclerAdapter<HomeMovies, HomeM
     protected void onBindViewHolder(@NonNull HomeMovieViewHolder holder, int position, @NonNull HomeMovies model) {
         holder.homeMovieName.setText(model.getMovieName());
 
-        holder.homeMovieCategory.setText(model.getId().toString());
         Glide.with(context).load(model.getImageUrl()).into(holder.homeMovieItemImage);
     }
 

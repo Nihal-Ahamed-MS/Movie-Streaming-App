@@ -2,9 +2,11 @@ package com.example.moviestreamingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.telecom.Call;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,6 +35,15 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         Glide.with(this).load(imageName).into(detailMovieImage);
         detailMovieName.setText(movieName);
+
+        detailMovieButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MovieDetailActivity.this,VideoPlayer.class);
+                intent.putExtra("url",fileUrl);
+                startActivity(intent);
+            }
+        });
 
     }
 }
