@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 //        homeMovieRecyclerView.setAdapter(homeMovieAdapter.HomeAdapter());
 //        homeMovieAdapter.HomeAdapter().startListening();
         HomeMovieAdapter();
+        getParentActivityIntent();
     }
 
     private void HomeMovieAdapter(){
