@@ -1,5 +1,6 @@
 package com.example.moviestreamingapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.moviestreamingapp.adapter.BannerMoviesAdapter;
 import com.example.moviestreamingapp.adapter.HomeMovieAdapter;
@@ -16,16 +19,22 @@ import com.example.moviestreamingapp.model.BannerMovies;
 import com.example.moviestreamingapp.model.HomeMovies;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity implements HomeMovieAdapter.OnHomeMovieClick {
+public class MainActivity extends AppCompatActivity implements HomeMovieAdapter.OnHomeMovieClick, LinkDialog.addDialogListener {
 
     String TAG = "HomeMovieCheck";
     Context context;
@@ -49,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements HomeMovieAdapter.
         setContentView(R.layout.activity_main);
 
         setTitle("Video Player");
+
+        LinkDialog linkDialog = new LinkDialog();
 
         homeMovieRecyclerView = findViewById(R.id.homeMovieRecyclerView);
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -105,6 +116,14 @@ public class MainActivity extends AppCompatActivity implements HomeMovieAdapter.
             }
         });
         HomeMovieAdapter();
+
+        FloatingActionButton addbtn = findViewById(R.id.openLinkDialog);
+        addbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                linkDialog.show(getSupportFragmentManager(),"Add Dialog");
+            }
+        });
 
     }
 
@@ -183,5 +202,16 @@ public class MainActivity extends AppCompatActivity implements HomeMovieAdapter.
 //        homeMovieAdapter = new HomeMovieAdapter(context);
 //        homeMovieAdapter.HomeAdapter().stopListening();
         adapter.stopListening();
+    }
+
+    @Override
+    public void valesFromEditText(String link) {
+        if(link.isEmpty()){
+            Toast.makeText(MainActivity.this,"Link is empty",Toast.LENGTH_LONG).show();
+        }else{
+            Intent intent = new Intent(MainActivity.this,VideoPlayer.class);
+            intent.putExtra("url",link);
+            startActivity(intent);
+        }
     }
 }
